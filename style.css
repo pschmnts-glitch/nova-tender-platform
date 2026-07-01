@@ -19,3 +19,6 @@ body{background:linear-gradient(135deg,#f5f3ea 0%,#ecefe3 42%,#e4ebea 100%);colo
 
 /* Scroll spy + soft reveal motion */
 .reveal{opacity:0;transform:translate3d(0,22px,0) scale(.985);filter:blur(8px);transition:opacity .72s cubic-bezier(.22,1,.36,1),transform .72s cubic-bezier(.22,1,.36,1),filter .72s cubic-bezier(.22,1,.36,1);transition-delay:calc(var(--reveal-index,0) * 70ms);will-change:opacity,transform,filter}.reveal.is-visible{opacity:1;transform:translate3d(0,0,0) scale(1);filter:blur(0)}.project.reveal,.tender.reveal,.contactCard.reveal{transform:translate3d(0,24px,0) scale(.975)}.sectionHead.reveal{transform:translate3d(0,16px,0)}.tenderConsole.reveal,.contactHeroCard.reveal,.cta.reveal{transform:translate3d(0,18px,0) scale(.99)}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;filter:none;transition:none;will-change:auto}}
+
+/* Tender filters readability fix */
+.filters input,.filters select{color:var(--ink);background:rgba(255,252,243,.9);border-color:rgba(216,217,201,.92)}.filters input::placeholder{color:#777d70}.filters select option{color:var(--ink);background:#fffaf0}
