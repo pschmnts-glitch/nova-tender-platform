@@ -40,6 +40,11 @@ function sectionTop(section) {
 function updateActiveByScroll() {
   scrollSpyTicking = false;
 
+  if (window.location.hash && window.scrollY < 120) {
+    setActiveNavLink(window.location.hash);
+    return;
+  }
+
   if (currentPageKey() !== "nova-tender-platform.html") {
     setActiveNavLink();
     return;
@@ -54,11 +59,17 @@ function updateActiveByScroll() {
 
   const topbar = document.querySelector(".topbar");
   const topbarHeight = topbar ? topbar.getBoundingClientRect().height : 0;
-  const marker = window.scrollY + topbarHeight + Math.min(window.innerHeight * 0.34, 260);
+  const marker = window.scrollY + topbarHeight + Math.min(window.innerHeight * 0.5, 360);
   const firstSectionTop = sectionPairs.length ? sectionTop(sectionPairs[0].section) : Infinity;
+  const nearPageBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 80;
 
   if (window.scrollY < 180 || marker < firstSectionTop) {
     setActiveNavLink("");
+    return;
+  }
+
+  if (nearPageBottom && sectionPairs.length) {
+    setActiveNavLink(sectionPairs[sectionPairs.length - 1].hash);
     return;
   }
 
