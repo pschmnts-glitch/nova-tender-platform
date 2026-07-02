@@ -300,3 +300,54 @@ body{background:linear-gradient(135deg,#f5f3ea 0%,#ecefe3 42%,#e4ebea 100%);colo
   color: #4d5248;
   font-weight: 800;
 }
+
+
+/* Crisp hover shimmer for live feed cards */
+.consoleItem {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.consoleItem::before {
+  content: "";
+  display: block !important;
+  position: absolute;
+  inset: -45%;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate3d(-38%, -38%, 0) rotate(18deg);
+  background: linear-gradient(135deg, transparent 35%, rgba(255, 255, 255, .82) 47%, rgba(184, 220, 49, .22) 52%, transparent 65%);
+}
+
+.consoleItem:hover::before,
+.consoleItem:focus-visible::before {
+  animation: liveCardShimmer 2.8s ease-in-out infinite;
+}
+
+.consoleItem > * {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes liveCardShimmer {
+  0% {
+    opacity: 0;
+    transform: translate3d(-42%, -42%, 0) rotate(18deg);
+  }
+
+  18% {
+    opacity: .72;
+  }
+
+  46% {
+    opacity: .46;
+    transform: translate3d(42%, 42%, 0) rotate(18deg);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(42%, 42%, 0) rotate(18deg);
+  }
+}
